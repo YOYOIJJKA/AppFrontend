@@ -1,0 +1,52 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Код Товара</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Название</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="storageId">
+      <th mat-header-cell *matHeaderCellDef>ID хранилища</th>
+      <td mat-cell *matCellDef="let element">{{ element.storageId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef>Количество</th>
+      <td mat-cell *matCellDef="let element">{{ element.number }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeId">
+      <th mat-header-cell *matHeaderCellDef>ID работника</th>
+      <td mat-cell *matCellDef="let element">{{ element.employeeId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="clientId">
+      <th mat-header-cell *matHeaderCellDef>Клиент</th>
+      <td mat-cell *matCellDef="let element">{{ element.clientId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateRecieved">
+      <th mat-header-cell *matHeaderCellDef>Дата получения</th>
+      <td mat-cell *matCellDef="let element">{{ element.dateRecieved }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateExpired">
+      <th mat-header-cell *matHeaderCellDef>Дата окончания хранения</th>
+      <td mat-cell *matCellDef="let element">{{ element.dateExpired }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[12, 24, 48]"
+    showFirstLastButtons
+    aria-label="Выберите страницу"
+  >
+  </mat-paginator>
+</div>

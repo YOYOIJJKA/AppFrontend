@@ -1,0 +1,24 @@
+<body>
+  <form [formGroup]="authForm" class="auth">
+    <h1>Форма авторизации</h1>
+    <mat-form-field>
+      <input
+        matInput
+        id="login"
+        formControlName="login"
+        placeholder="Введите логин"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Введите пароль"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="logIn()">Войти</button>
+    <button mat-raised-button color="primary" (click)="signIn()">Зарегистрироваться</button>
+  </form>
+</body>
