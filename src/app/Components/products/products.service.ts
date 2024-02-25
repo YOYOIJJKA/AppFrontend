@@ -86,7 +86,7 @@ export class ProductsService {
   deleteEmployee(id: number): Observable<Employee> {
     return this.http.delete<Employee>(this.EMPLOYEEURL + id.toString());
   }
-  EmployeeEmployee(Employee: Employee): Observable<Employee> {
+  postEmployee(Employee: Employee): Observable<Employee> {
     return this.http.post<Employee>(this.EMPLOYEEURL, Employee);
   }
   getEmployee(id: number): Observable<Employee> {
@@ -96,6 +96,65 @@ export class ProductsService {
     return this.http.put<Employee[]>(this.EMPLOYEEURL, Employee);
   }
   //////////
-  
+  putStorageLocation(
+    StorageLocation: StorageLocation
+  ): Observable<StorageLocation> {
+    return this.http.put<StorageLocation>(
+      this.STORAGELOCATIONURL + StorageLocation.id,
+      StorageLocation
+    );
+  }
+  getStorageLocations(): Observable<StorageLocation[]> {
+    return this.http.get<StorageLocation[]>(this.STORAGELOCATIONURL);
+  }
+  deleteStorageLocation(id: number): Observable<StorageLocation> {
+    return this.http.delete<StorageLocation>(
+      this.STORAGELOCATIONURL + id.toString()
+    );
+  }
+  postStorageLocation(
+    StorageLocation: StorageLocation
+  ): Observable<StorageLocation> {
+    return this.http.post<StorageLocation>(
+      this.STORAGELOCATIONURL,
+      StorageLocation
+    );
+  }
+  getStorageLocation(id: number): Observable<StorageLocation> {
+    return this.http.get<StorageLocation>(
+      this.STORAGELOCATIONURL + id.toString()
+    );
+  }
+  putStorageLocations(
+    StorageLocation: StorageLocation[]
+  ): Observable<StorageLocation[]> {
+    return this.http.put<StorageLocation[]>(
+      this.STORAGELOCATIONURL,
+      StorageLocation
+    );
+  }
 
+  ////////////////////
+
+  putSuppliers(Suppliers: Suppliers): Observable<Suppliers> {
+    return this.http.put<Suppliers>(
+      this.SUPPLIERSURL + Suppliers.id,
+      Suppliers
+    );
+  }
+  getSupplierss(): Observable<Suppliers[]> {
+    return this.http.get<Suppliers[]>(this.SUPPLIERSURL);
+  }
+  deleteSuppliers(id: number): Observable<Suppliers> {
+    return this.http.delete<Suppliers>(this.SUPPLIERSURL + id.toString());
+  }
+  postSuppliers(Suppliers: Suppliers): Observable<Suppliers> {
+    return this.http.post<Suppliers>(this.SUPPLIERSURL, Suppliers);
+  }
+  getSuppliers(id: number): Observable<Suppliers> {
+    return this.http.get<Suppliers>(this.SUPPLIERSURL + id.toString());
+  }
+  putSupplierss(Suppliers: Suppliers[]): Observable<Suppliers[]> {
+    return this.http.put<Suppliers[]>(this.SUPPLIERSURL, Suppliers);
+  }
 }
