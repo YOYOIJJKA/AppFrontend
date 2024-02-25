@@ -6,5 +6,6 @@ export interface Product {
     employeeId:string,
     clientId?:string,
     dateRecieved:string,
-    dateExpired?:string
+    dateExpired?:string,
+    suppliersId:string,
 }

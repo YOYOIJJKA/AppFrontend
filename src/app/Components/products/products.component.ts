@@ -19,6 +19,7 @@ export class ProductsComponent implements AfterViewInit {
     'number',
     'employeeId',
     'clientId',
+    'suppliersId',
     'dateRecieved',
     'dateExpired',
     'confirm',
@@ -38,7 +39,13 @@ export class ProductsComponent implements AfterViewInit {
     clientId: '1',
     dateRecieved: '2022-02-02',
     dateExpired: '2022-02-02',
+    suppliersId: '1'
   };
+
+  // clients$ = 
+  // employees$=
+  // suppliers$=
+  // storeLocation$=
 
   ngAfterViewInit(): void {
     this.getProducts();

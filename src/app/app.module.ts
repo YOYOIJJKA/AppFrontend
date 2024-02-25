@@ -22,6 +22,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ModalComponent } from './Components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
     StorageLocationComponent,
     AuthComponent,
     RegistrationComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
