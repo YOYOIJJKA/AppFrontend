@@ -1,5 +1,17 @@
 {
-  "products": [],
+  "products": [
+    {
+      "id": "e15a",
+      "name": "New",
+      "number": 2,
+      "clientId": null,
+      "storageLocationId": "0",
+      "supplierId": "0",
+      "dateRecieved": "2222-02-22",
+      "dateExpired": "2222-02-22",
+      "employeeId": "2dcb"
+    }
+  ],
   "posts": [],
   "employees": [
     {
@@ -13,7 +25,22 @@
       "postId": 0
     }
   ],
-  "suppliers": [],
-  "storage-location": [],
-  "clients": []
+  "suppliers": [
+    {
+      "id": "0",
+      "name": "Маргарита"
+    }
+  ],
+  "storage-location": [
+    {
+      "id": "0",
+      "name": "Маргарита"
+    }
+  ],
+  "clients": [
+    {
+      "id": "0",
+      "name": "Маргарита"
+    }
+  ]
 }

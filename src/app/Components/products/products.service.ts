@@ -35,9 +35,6 @@ export class ProductsService {
   getProduct(id: number): Observable<Product> {
     return this.http.get<Product>(this.URL + id.toString());
   }
-  putProducts(products: Product[]): Observable<Product[]> {
-    return this.http.put<Product[]>(this.URL, products);
-  }
   /////////////////////
   putClient(client: Client): Observable<Client> {
     return this.http.put<Client>(this.CLIENTURL + client.id, client);
@@ -53,9 +50,6 @@ export class ProductsService {
   }
   getClient(id: number): Observable<Client> {
     return this.http.get<Client>(this.CLIENTURL + id.toString());
-  }
-  putClients(client: Client[]): Observable<Client[]> {
-    return this.http.put<Client[]>(this.CLIENTURL, client);
   }
   ///////////////////////////
   putPost(post: Post): Observable<Post> {
@@ -73,9 +67,6 @@ export class ProductsService {
   getPost(id: number): Observable<Post> {
     return this.http.get<Post>(this.POSTURL + id.toString());
   }
-  putPosts(post: Post[]): Observable<Post[]> {
-    return this.http.put<Post[]>(this.POSTURL, post);
-  }
   ///////////////
   putEmployee(Employee: Employee): Observable<Employee> {
     return this.http.put<Employee>(this.EMPLOYEEURL + Employee.id, Employee);
@@ -91,9 +82,6 @@ export class ProductsService {
   }
   getEmployee(id: number): Observable<Employee> {
     return this.http.get<Employee>(this.EMPLOYEEURL + id.toString());
-  }
-  putEmployees(Employee: Employee[]): Observable<Employee[]> {
-    return this.http.put<Employee[]>(this.EMPLOYEEURL, Employee);
   }
   //////////
   putStorageLocation(
@@ -125,24 +113,16 @@ export class ProductsService {
       this.STORAGELOCATIONURL + id.toString()
     );
   }
-  putStorageLocations(
-    StorageLocation: StorageLocation[]
-  ): Observable<StorageLocation[]> {
-    return this.http.put<StorageLocation[]>(
-      this.STORAGELOCATIONURL,
-      StorageLocation
-    );
-  }
 
   ////////////////////
 
-  putSuppliers(Suppliers: Suppliers): Observable<Suppliers> {
+  putSupplier(Suppliers: Suppliers): Observable<Suppliers> {
     return this.http.put<Suppliers>(
       this.SUPPLIERSURL + Suppliers.id,
       Suppliers
     );
   }
-  getSupplierss(): Observable<Suppliers[]> {
+  getSuppliers(): Observable<Suppliers[]> {
     return this.http.get<Suppliers[]>(this.SUPPLIERSURL);
   }
   deleteSuppliers(id: number): Observable<Suppliers> {
@@ -151,10 +131,7 @@ export class ProductsService {
   postSuppliers(Suppliers: Suppliers): Observable<Suppliers> {
     return this.http.post<Suppliers>(this.SUPPLIERSURL, Suppliers);
   }
-  getSuppliers(id: number): Observable<Suppliers> {
+  getSupplier(id: number): Observable<Suppliers> {
     return this.http.get<Suppliers>(this.SUPPLIERSURL + id.toString());
-  }
-  putSupplierss(Suppliers: Suppliers[]): Observable<Suppliers[]> {
-    return this.http.put<Suppliers[]>(this.SUPPLIERSURL, Suppliers);
   }
 }

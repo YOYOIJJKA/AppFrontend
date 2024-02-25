@@ -1,1 +1,81 @@
-<p>modal works!</p>
+<body>
+  <form [formGroup]="modalForm" class="modal">
+    <h1>Добавить продукт</h1>
+    <mat-form-field>
+      <input
+        matInput
+        id="name"
+        formControlName="name"
+        placeholder="Название*"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        id="number"
+        formControlName="number"
+        placeholder="Rоличество*"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>ID клиента</mat-label>
+      <mat-select formControlName="clientId">
+        <ng-container *ngIf="clients$ | async as clients">
+          <mat-option *ngFor="let client of clients" value="{{ client.id }}">{{
+            client.id
+          }}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>ID места хранения</mat-label>
+      <mat-select formControlName="storageLocationId">
+        <ng-container *ngIf="storeLocation$ | async as storages">
+          <mat-option
+            *ngFor="let storage of storages"
+            value="{{ storage.id }}"
+            >{{ storage.id }}</mat-option
+          >
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>ID поставщика</mat-label>
+      <mat-select formControlName="supplierId">
+        <ng-container *ngIf="suppliers$ | async as suppliers">
+          <mat-option
+            *ngFor="let supplier of suppliers"
+            value="{{ supplier.id }}"
+            >{{ supplier.id }}</mat-option
+          >
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Дата получения</mat-label>
+      <input
+        matInput
+        type="date"
+        formControlName="dateRecieved"
+        id="dateRecieved"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Дата окончания хранения</mat-label>
+      <input
+        matInput
+        type="date"
+        formControlName="dateExpired"
+        id="dateExpired"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="post()">Сохранить</button>
+    <button mat-raised-button color="warn" (click)="closeModal()">Отмена</button>
+  </form>
+</body>

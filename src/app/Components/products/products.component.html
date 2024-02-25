@@ -41,11 +41,7 @@
     <ng-container matColumnDef="employeeId">
       <th mat-header-cell *matHeaderCellDef>ID работника</th>
       <td mat-cell *matCellDef="let element">
-        <mat-select [(ngModel)]="element.employeeId">
-          <mat-option value="{{ element.employeeId }}">{{
-            element.employeeId
-          }}</mat-option>
-        </mat-select>
+        {{ element.employeeId }}
       </td>
     </ng-container>
 
@@ -53,9 +49,13 @@
       <th mat-header-cell *matHeaderCellDef>ID клиента</th>
       <td mat-cell *matCellDef="let element">
         <mat-select [(ngModel)]="element.clientId">
-          <mat-option value="{{ element.clientId }}">{{
-            element.clientId
-          }}</mat-option>
+          <ng-container *ngIf="clients$ | async as clients">
+            <mat-option
+              *ngFor="let client of clients"
+              value="{{ client.id }}"
+              >{{ element.clientId }}</mat-option
+            >
+          </ng-container>
         </mat-select>
       </td>
     </ng-container>
@@ -64,9 +64,13 @@
       <th mat-header-cell *matHeaderCellDef>ID поставщика</th>
       <td mat-cell *matCellDef="let element">
         <mat-select [(ngModel)]="element.suppliersId">
-          <mat-option value="{{ element.suppliersId }}">{{
-            element.clientId
-          }}</mat-option>
+          <ng-container *ngIf="suppliers$ | async as suppliers">
+            <mat-option
+              *ngFor="let supplier of suppliers"
+              value="{{ supplier.id }}"
+              >{{ element.clientId }}</mat-option
+            >
+          </ng-container>
         </mat-select>
       </td>
     </ng-container>

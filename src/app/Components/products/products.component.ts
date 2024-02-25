@@ -3,6 +3,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Product } from '../../Interfaces/product';
 import { ProductsService } from './products.service';
+import { Observable } from 'rxjs';
+import { Client } from '../../Interfaces/client';
+import { Employee } from '../../Interfaces/employee';
+import { Suppliers } from '../../Interfaces/suppliers';
+import { StorageLocation } from '../../Interfaces/storage-location';
 
 @Component({
   selector: 'app-products',
@@ -39,13 +44,14 @@ export class ProductsComponent implements AfterViewInit {
     clientId: '1',
     dateRecieved: '2022-02-02',
     dateExpired: '2022-02-02',
-    suppliersId: '1'
+    suppliersId: '1',
   };
 
-  // clients$ = 
-  // employees$=
-  // suppliers$=
-  // storeLocation$=
+  clients$: Observable<Client[]> = this.http.getClients();
+  employees$: Observable<Employee[]> = this.http.getEmployees();
+  suppliers$: Observable<Suppliers[]> = this.http.getSuppliers();
+  storeLocation$: Observable<StorageLocation[]> =
+    this.http.getStorageLocations();
 
   ngAfterViewInit(): void {
     this.getProducts();
@@ -53,22 +59,23 @@ export class ProductsComponent implements AfterViewInit {
 
   putElement(element: Product) {
     this.http.putProduct(element).subscribe();
-    this.ngAfterViewInit()
+    this.getProducts();
   }
 
   putElements(elements: Product[] | undefined) {
-    if (elements) this.http.putProducts(elements).subscribe();
-    this.ngAfterViewInit()
+    if (elements)
+      elements.forEach((element) => this.http.putProduct(element).subscribe());
+    this.getProducts();
   }
 
   deleteElement(id: number) {
     this.http.deleteProduct(id).subscribe({ error: (e) => console.log(e) });
-    this.ngAfterViewInit()
+    this.getProducts();
   }
 
   postElement(element: Product) {
     this.http.postProduct(element).subscribe();
-    this.ngAfterViewInit()
+    this.getProducts();
   }
 
   getProducts() {

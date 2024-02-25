@@ -8,11 +8,12 @@ import { SuppliersComponent } from './Components/suppliers/suppliers.component';
 import { PostsComponent } from './Components/posts/posts.component';
 import { StorageLocationComponent } from './Components/storage-location/storage-location.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
+import { ModalComponent } from './Components/modal/modal.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AuthComponent,
+    component: ModalComponent,
   },
   {
     path: 'products',
@@ -38,7 +39,6 @@ const routes: Routes = [
     path: 'storage-location',
     component: StorageLocationComponent,
   },
-  ////////////////REMOVE
   {
     path: 'registration',
     component: RegistrationComponent
