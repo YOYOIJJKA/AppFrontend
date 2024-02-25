@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.tableType.setValue('products');
-    this.router.navigateByUrl('products')
   }
 
   checkLink(): boolean {

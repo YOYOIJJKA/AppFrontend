@@ -7,6 +7,7 @@ import { ClientsComponent } from './Components/clients/clients.component';
 import { SuppliersComponent } from './Components/suppliers/suppliers.component';
 import { PostsComponent } from './Components/posts/posts.component';
 import { StorageLocationComponent } from './Components/storage-location/storage-location.component';
+import { RegistrationComponent } from './Components/registration/registration.component';
 
 const routes: Routes = [
   {
@@ -37,10 +38,15 @@ const routes: Routes = [
     path: 'storage-location',
     component: StorageLocationComponent,
   },
+  ////////////////REMOVE
+  {
+    path: 'registration',
+    component: RegistrationComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

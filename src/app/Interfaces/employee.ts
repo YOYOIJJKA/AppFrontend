@@ -1,6 +1,6 @@
 export interface Employee {
   id: number;
-  postId: number;
+  postId?: number;
   name: string;
   surname: string;
   patronimic: string;

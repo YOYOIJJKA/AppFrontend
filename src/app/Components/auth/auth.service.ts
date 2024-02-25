@@ -1,18 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../../Interfaces/user';
 import { Observable } from 'rxjs';
+import { Employee } from '../../Interfaces/employee';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  postUser(user: User): Observable<User> {
-    return this.http.post<User>('https://localhost:3000/users', user);
+  setEmployee(employee: Employee): void {
+    this.saveLogin(employee.email)
+    this.savePassword(employee.password)
+    this.saveId(employee.id)
   }
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('https://localhost:3000/users');
+
+  enableAdmin(): void {
+    this.saveFlag(true)
+  }
+  disableAdmin(): void {
+    this.saveFlag(false)
+  }
+
+  postEmployee(employee: Employee): Observable<Employee> {
+    employee.postId = 0
+    this.setAuth()
+    return this.http.post<Employee>('http://localhost:3000/employees', employee);
+  }
+  getEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>('http://localhost:3000/employees');
+  }
+  getEmployeeById(id: number): Observable<Employee> {
+    return this.http.get<Employee>('http://localhost:3000/employees' + id)
+  }
+  saveId(value: number): void {
+    localStorage.setItem('id', JSON.stringify(value))
+  }
+  getId(): number {
+    return JSON.parse(localStorage.getItem('id')!)
   }
   savePassword(value: string): void {
     localStorage.setItem('password', JSON.stringify(value));
@@ -26,7 +51,7 @@ export class AuthService {
   getLogin(): string {
     return JSON.parse(localStorage.getItem('login')!);
   }
-  saveFlag(value: string): void {
+  saveFlag(value: boolean): void {
     localStorage.setItem('flag', JSON.stringify(value));
   }
   getFlag(): string {

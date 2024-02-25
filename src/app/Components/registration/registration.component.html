@@ -1,0 +1,25 @@
+<body>
+    <form [formGroup]="authForm" class="auth">
+        <h1>Форма Регистрации</h1>
+        <mat-form-field>
+            <input matInput type="email" id="email" formControlName="email" placeholder="Введите E-mail" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput id="name" formControlName="name" placeholder="Введите Имя" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput id="surname" formControlName="surname" placeholder="Введите Фамилию" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput id="patronimic" formControlName="patronimic" placeholder="Введите Отчество" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput id="phone" formControlName="phone" placeholder="Введите номер телефона" />
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" id="password" formControlName="password" placeholder="Введите пароль" />
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="signIn()">Зарегистрироваться</button>
+    </form>
+</body>

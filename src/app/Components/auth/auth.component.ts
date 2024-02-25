@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -18,21 +19,16 @@ export class AuthComponent implements OnInit {
       password: [null, [Validators.required, Validators.pattern(/^\S*$/)]],
     });
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   logIn() {
-    if (!this.authForm.invalid)
-    {
-    this.router.navigate(['products'])
-    //////////CHECK USER
+    if (!this.authForm.invalid) {
+      this.router.navigate(['products'])
+      //////////CHECK USER
     }
   }
 
   signIn() {
-    if (!this.authForm.invalid)
-    {
-    this.router.navigate(['products'])
-    ///////POST USER
-    }
+    this.router.navigate(['registration'])
   }
 }

@@ -19,6 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
+import { RegistrationComponent } from './Components/registration/registration.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { MatRadioModule } from '@angular/material/radio';
     SuppliersComponent,
     StorageLocationComponent,
     AuthComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +46,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatPaginatorModule,
     MatSidenavModule,
     MatRadioModule,
+    HttpClientModule
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
