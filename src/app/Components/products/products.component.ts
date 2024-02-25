@@ -46,14 +46,22 @@ export class ProductsComponent implements AfterViewInit {
 
   putElement(element: Product) {
     this.http.putProduct(element).subscribe();
+    this.ngAfterViewInit()
+  }
+
+  putElements(elements: Product[] | undefined) {
+    if (elements) this.http.putProducts(elements).subscribe();
+    this.ngAfterViewInit()
   }
 
   deleteElement(id: number) {
-    // this.http.deleteProduct(id).subscribe();
+    this.http.deleteProduct(id).subscribe({ error: (e) => console.log(e) });
+    this.ngAfterViewInit()
   }
 
   postElement(element: Product) {
     this.http.postProduct(element).subscribe();
+    this.ngAfterViewInit()
   }
 
   getProducts() {

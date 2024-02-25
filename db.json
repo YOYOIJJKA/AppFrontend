@@ -1,7 +1,18 @@
 {
   "products": [],
   "posts": [],
-  "employees": [],
+  "employees": [
+    {
+      "id": "2dcb",
+      "password": "пипипи",
+      "name": "Маргарита",
+      "surname": "Сульдина",
+      "patronimic": "Александровна",
+      "phone": "+79999874390",
+      "email": "chipichipi",
+      "postId": 0
+    }
+  ],
   "suppliers": [],
   "storage-location": [],
   "clients": []

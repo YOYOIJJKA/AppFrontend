@@ -9,7 +9,12 @@ th {
 td {
   padding: 0px 4px 0px 4px;
 }
-select
-{
-    border: none;
+select {
+  border: none;
+}
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin: 10px;
 }
