@@ -1,18 +1,7 @@
 {
   "products": [],
   "posts": [],
-  "employees": [
-    {
-      "id": "a6ef",
-      "password": "Leopard2A7+",
-      "name": "Александр",
-      "surname": "Калитюк",
-      "patronimic": "Васильевич",
-      "phone": "+79999874390",
-      "email": "dedinside",
-      "postId": 0
-    }
-  ],
+  "employees": [],
   "suppliers": [],
   "storage-location": [],
   "clients": []

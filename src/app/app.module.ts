@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
 import { RegistrationComponent } from './Components/registration/registration.component';
-import { HttpClientModule } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -46,9 +47,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatPaginatorModule,
     MatSidenavModule,
     MatRadioModule,
-    HttpClientModule
+    MatSelectModule,
+    HttpClientModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

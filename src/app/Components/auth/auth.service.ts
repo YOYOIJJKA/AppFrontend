@@ -7,37 +7,40 @@ import { Employee } from '../../Interfaces/employee';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   setEmployee(employee: Employee): void {
-    this.saveLogin(employee.email)
-    this.savePassword(employee.password)
-    this.saveId(employee.id)
+    this.saveLogin(employee.email);
+    this.savePassword(employee.password);
+    this.saveId(employee.id);
   }
 
   enableAdmin(): void {
-    this.saveFlag(true)
+    this.saveFlag(true);
   }
   disableAdmin(): void {
-    this.saveFlag(false)
+    this.saveFlag(false);
   }
 
   postEmployee(employee: Employee): Observable<Employee> {
-    employee.postId = 0
-    this.setAuth()
-    return this.http.post<Employee>('http://localhost:3000/employees', employee);
+    employee.postId = 0;
+    this.setAuth();
+    return this.http.post<Employee>(
+      'http://localhost:3000/employees',
+      employee
+    );
   }
   getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>('http://localhost:3000/employees');
   }
   getEmployeeById(id: number): Observable<Employee> {
-    return this.http.get<Employee>('http://localhost:3000/employees' + id)
+    return this.http.get<Employee>('http://localhost:3000/employees' + id);
   }
   saveId(value: number): void {
-    localStorage.setItem('id', JSON.stringify(value))
+    localStorage.setItem('id', JSON.stringify(value));
   }
   getId(): number {
-    return JSON.parse(localStorage.getItem('id')!)
+    return JSON.parse(localStorage.getItem('id')!);
   }
   savePassword(value: string): void {
     localStorage.setItem('password', JSON.stringify(value));
@@ -54,7 +57,10 @@ export class AuthService {
   saveFlag(value: boolean): void {
     localStorage.setItem('flag', JSON.stringify(value));
   }
-  getFlag(): string {
+  savePost(value: number): void {
+    localStorage.setItem('post', JSON.stringify(value));
+  }
+  getFlag(): boolean {
     return JSON.parse(localStorage.getItem('flag')!);
   }
   setAuth(): void {
@@ -69,5 +75,6 @@ export class AuthService {
     localStorage.removeItem('password');
     localStorage.removeItem('authorized');
     localStorage.removeItem('flag');
+    localStorage.removeItem('post');
   }
 }

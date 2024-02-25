@@ -8,12 +8,15 @@ import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrl: './registration.component.scss'
+  styleUrl: './registration.component.scss',
 })
 export class RegistrationComponent implements OnInit {
-
   authForm: FormGroup;
-  constructor(public formBuilder: FormBuilder, public router: Router, public http: AuthService) {
+  constructor(
+    public formBuilder: FormBuilder,
+    public router: Router,
+    public http: AuthService
+  ) {
     this.authForm = formBuilder.group({
       password: [null, [Validators.required, Validators.pattern(/^\S*$/)]],
       name: [
@@ -28,20 +31,36 @@ export class RegistrationComponent implements OnInit {
         null,
         [Validators.required, Validators.pattern('[A-Za-zА-Яа-яЁё]*')],
       ],
-      phone: [null, [Validators.required, Validators.pattern('[- +()0-9]+'), Validators.maxLength(12), Validators.minLength(12)]],
+      phone: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern('[- +()0-9]+'),
+          Validators.maxLength(12),
+          Validators.minLength(12),
+        ],
+      ],
       email: [null, [Validators.required]],
     });
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   signIn() {
     let worker: Employee;
     if (this.authForm.valid) {
-      worker = this.authForm.getRawValue()
-      console.log(worker)
-      this.http.postEmployee(worker).subscribe()
-      this.router.navigate(['products'])
-      // this.http.postUser(worker);
+      worker = this.authForm.getRawValue();
+      this.http.postEmployee(worker).subscribe();
+      this.http.getEmployees().subscribe({
+        next: (value) => {
+          worker.id = value[value.length - 1].id;
+        },
+        complete: () => {
+          this.http.saveId(worker.id);
+          this.http.saveLogin(worker.email);
+          this.http.savePassword(worker.password);
+          this.router.navigate(['products']);
+        },
+      });
     }
   }
 }

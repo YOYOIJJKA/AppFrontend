@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Product } from '../../Interfaces/product';
+import { ProductsService } from './products.service';
 
 @Component({
   selector: 'app-products',
@@ -9,6 +10,8 @@ import { Product } from '../../Interfaces/product';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements AfterViewInit {
+  constructor(public http: ProductsService) {}
+
   displayedColumns: string[] = [
     'id',
     'name',
@@ -18,6 +21,7 @@ export class ProductsComponent implements AfterViewInit {
     'clientId',
     'dateRecieved',
     'dateExpired',
+    'confirm',
   ];
 
   products?: Product[];
@@ -25,30 +29,40 @@ export class ProductsComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<Product>(this.products);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  newElement: Product = {
+    id: 0,
+    name: 'Noname',
+    storageId: 'N1',
+    number: 1,
+    employeeId: '1',
+    clientId: '1',
+    dateRecieved: '2022-02-02',
+    dateExpired: '2022-02-02',
+  };
+
   ngAfterViewInit(): void {
-    this.products = [
-      {
-        id: 0,
-        name: 'Noname',
-        storageId: 'N1',
-        number: 1,
-        employeeId: 1,
-        clientId: 1,
-        dateRecieved: '2022-02-02',
-        dateExpired: '2022-02-02',
+    this.getProducts();
+  }
+
+  putElement(element: Product) {
+    this.http.putProduct(element).subscribe();
+  }
+
+  deleteElement(id: number) {
+    // this.http.deleteProduct(id).subscribe();
+  }
+
+  postElement(element: Product) {
+    this.http.postProduct(element).subscribe();
+  }
+
+  getProducts() {
+    this.http.getProducts().subscribe({
+      next: (products) => (this.products = products),
+      complete: () => {
+        this.dataSource = new MatTableDataSource<Product>(this.products);
+        this.dataSource.paginator = this.paginator;
       },
-      {
-        id: 0,
-        name: 'Noname',
-        storageId: 'N2',
-        number: 1,
-        employeeId: 1,
-        clientId: 1,
-        dateRecieved: '2022-02-02',
-        dateExpired: '2022-02-02',
-      },
-    ];
-    this.dataSource = new MatTableDataSource<Product>(this.products);
-    this.dataSource.paginator = this.paginator;
+    });
   }
 }

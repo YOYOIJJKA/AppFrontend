@@ -3,8 +3,8 @@ export interface Product {
     name:string,
     storageId:string,
     number:number,
-    employeeId:number,
-    clientId?:number,
+    employeeId:string,
+    clientId?:string,
     dateRecieved:string,
     dateExpired?:string
 }
