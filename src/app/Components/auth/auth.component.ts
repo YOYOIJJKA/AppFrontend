@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { map, switchMap } from 'rxjs';
+import { map } from 'rxjs';
 import { Employee } from '../../Interfaces/employee';
 
 @Component({
@@ -38,7 +38,7 @@ export class AuthComponent implements OnInit {
       .pipe(
         map((employees) => {
           return employees.filter((employee) => {
-            return employee.email == login;
+            return employee.email == login && employee.password == password;
           });
         })
       )

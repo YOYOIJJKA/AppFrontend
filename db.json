@@ -12,17 +12,23 @@
       "employeeId": "2dcb"
     }
   ],
-  "posts": [],
+  "posts": [
+    {
+      "id": "0",
+      "flag": false,
+      "name": "Пользователь"
+    }
+  ],
   "employees": [
     {
       "id": "2dcb",
       "password": "пипипи",
       "name": "Маргарита",
-      "surname": "Сульдина",
+      "surname": "CE",
       "patronimic": "Александровна",
       "phone": "+79999874390",
-      "email": "chipichipi",
-      "postId": 0
+      "email": "chipichipichapachapa",
+      "postId": "0"
     }
   ],
   "suppliers": [

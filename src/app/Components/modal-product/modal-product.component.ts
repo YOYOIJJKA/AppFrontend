@@ -8,19 +8,21 @@ import { StorageLocation } from '../../Interfaces/storage-location';
 import { ProductsService } from '../products/products.service';
 import { Product } from '../../Interfaces/product';
 import { AuthService } from '../auth/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
+  selector: 'app-modal-product',
+  templateUrl: './modal-product.component.html',
   styleUrl: './modal.component.scss',
 })
-export class ModalComponent {
+export class ModalProductComponent {
   modalForm: FormGroup;
 
   constructor(
     public formBuilder: FormBuilder,
     public http: ProductsService,
-    public auth: AuthService
+    public auth: AuthService,
+    public dialog: MatDialog
   ) {
     this.modalForm = formBuilder.group({
       name: [
@@ -48,5 +50,7 @@ export class ModalComponent {
     this.http.postProduct(product).subscribe();
   }
 
-  closeModal() {}
+  closeModal() {
+    this.dialog.closeAll();
+  }
 }

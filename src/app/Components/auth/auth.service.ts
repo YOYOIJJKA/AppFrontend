@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   postEmployee(employee: Employee): Observable<Employee> {
-    employee.postId = 0;
+    employee.postId = '0';
     this.setAuth();
     return this.http.post<Employee>(
       'http://localhost:3000/employees',

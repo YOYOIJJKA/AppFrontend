@@ -22,7 +22,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { MatSelectModule } from '@angular/material/select';
-import { ModalComponent } from './Components/modal/modal.component';
+import { ModalProductComponent } from './Components/modal-product/modal-product.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
@@ -36,7 +36,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     StorageLocationComponent,
     AuthComponent,
     RegistrationComponent,
-    ModalComponent,
+    ModalProductComponent,
   ],
   imports: [
     BrowserModule,

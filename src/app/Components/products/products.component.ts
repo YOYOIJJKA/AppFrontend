@@ -8,8 +8,9 @@ import { Client } from '../../Interfaces/client';
 import { Employee } from '../../Interfaces/employee';
 import { Suppliers } from '../../Interfaces/suppliers';
 import { StorageLocation } from '../../Interfaces/storage-location';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalProductComponent } from '../modal-product/modal-product.component';
 import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +18,17 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements AfterViewInit {
-  constructor(public http: ProductsService, public dialog: MatDialog) {}
+  filterForm: FormGroup;
+  constructor(
+    public http: ProductsService,
+    public dialog: MatDialog,
+    public formBuilder: FormBuilder
+  ) {
+    this.filterForm = this.formBuilder.group({
+      type: [null, [Validators.required]],
+      filterParam: [null, [Validators.required]],
+    });
+  }
 
   displayedColumns: string[] = [
     'id',
@@ -36,18 +47,6 @@ export class ProductsComponent implements AfterViewInit {
 
   dataSource = new MatTableDataSource<Product>(this.products);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  newElement: Product = {
-    id: 0,
-    name: 'Noname',
-    storageId: 'N1',
-    number: 1,
-    employeeId: '1',
-    clientId: '1',
-    dateRecieved: '2022-02-02',
-    dateExpired: '2022-02-02',
-    suppliersId: '1',
-  };
 
   clients$: Observable<Client[]> = this.http.getClients();
   employees$: Observable<Employee[]> = this.http.getEmployees();
@@ -91,7 +90,7 @@ export class ProductsComponent implements AfterViewInit {
   }
 
   openModal() {
-    const dialogRedact = this.dialog.open(ModalComponent, {
+    const dialogRedact = this.dialog.open(ModalProductComponent, {
       width: '40%',
     });
     dialogRedact.afterClosed().subscribe({
@@ -99,5 +98,29 @@ export class ProductsComponent implements AfterViewInit {
         this.getProducts();
       },
     });
+  }
+
+  filter() {
+    if (this.filterForm.valid) {
+      let filter = this.filterForm.getRawValue();
+      this.filterByType(filter.type, filter.filterParam);
+    }
+  }
+
+  filterByType(type: string, filterParam: string) {
+    let newProductList;
+    console.log('TRYING TO FILTER');
+    if (this.products)
+      if (
+        this.products.filter((product) =>
+          (product[type as keyof Product] as string).includes(filterParam)
+        )
+      ) {
+        newProductList = this.products.filter((product) =>
+          (product[type as keyof Product] as string).includes(filterParam)
+        );
+      }
+    this.dataSource = new MatTableDataSource(newProductList);
+    this.dataSource.paginator = this.paginator;
   }
 }
