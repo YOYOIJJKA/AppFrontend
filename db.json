@@ -33,7 +33,7 @@
       "patronimic": "Александровна",
       "phone": "+79999874390",
       "email": "chipichipichapachapa",
-      "postId": null
+      "postId": "d1ea"
     },
     {
       "id": "ecd1",
@@ -43,13 +43,15 @@
       "email": "chipichipi",
       "phone": "+79999874390",
       "password": "пипипи",
-      "postId": null
+      "postId": "d1ea"
     }
   ],
   "suppliers": [
     {
       "id": "0",
-      "name": "Маргарита"
+      "name": "Маргарита",
+      "phone": "9788996",
+      "email": "DAJOKA"
     }
   ],
   "storage-location": [
@@ -61,7 +63,15 @@
   "clients": [
     {
       "id": "0",
-      "name": "Маргарита"
+      "name": "Маргарита",
+      "email": "NewEmail",
+      "phone": "97987987"
+    },
+    {
+      "id": "717c",
+      "name": "Маргарита",
+      "email": "y7zdoh@list.ru",
+      "phone": "+72143265485"
     }
   ]
 }

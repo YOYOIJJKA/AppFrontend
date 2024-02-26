@@ -22,7 +22,10 @@ export class AuthComponent implements OnInit {
     this.authForm = formBuilder.group({
       login: [
         null,
-        [Validators.required, Validators.pattern('[A-Za-zА-Яа-яЁё]*')],
+        [
+          Validators.required,
+          Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
+        ],
       ],
       password: [null, [Validators.required, Validators.pattern(/^\S*$/)]],
     });

@@ -1,0 +1,33 @@
+input {
+  border: none;
+  width: auto;
+}
+
+th {
+  padding: 0px 4px 0px 4px;
+}
+td {
+  padding: 0px 4px 0px 4px;
+}
+select {
+  border: none;
+}
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin: 10px;
+}
+button {
+  width: 100%;
+}
+form {
+  display: flex;
+  align-content: center;
+  gap: 10px;
+  width: 100%;
+}
+.form-button {
+  width: auto;
+  padding: 28px;
+}

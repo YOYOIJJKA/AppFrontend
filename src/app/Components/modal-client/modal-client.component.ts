@@ -33,8 +33,6 @@ export class ModalClientComponent {
         null,
         [Validators.required, Validators.pattern(/^((\+7|7|8)+([0-9]){10})$/)],
       ],
-      postId: [null, [Validators.required]],
-      password: [null, [Validators.required]],
     });
   }
 

@@ -1,23 +1,93 @@
+<div class="header">
+  <button mat-raised-button color="warn" (click)="ngAfterViewInit()">
+    Сбросить все изменения
+  </button>
+  <button mat-raised-button color="primary" (click)="putElements(suppliers)">
+    Сохранить все изменения
+  </button>
+  <button mat-raised-button color="primary" (click)="openModal()">
+    Добавить запись
+  </button>
+</div>
+<div>
+  <form [formGroup]="filterForm">
+    <mat-form-field>
+      <mat-label>Искать в столбце:</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of displayedColumns" value="{{ type }}">{{
+          type
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Искать совпадение:</mat-label>
+      <input matInput formControlName="filterParam"
+    /></mat-form-field>
+    <button
+      mat-stroked-button
+      color="primary"
+      class="form-button"
+      (click)="filter()"
+    >
+      Найти
+    </button>
+    <button
+      mat-stroked-button
+      color="primary"
+      class="form-button"
+      (click)="getSuppliers()"
+    >
+      Сбросить параметры
+    </button>
+  </form>
+</div>
+
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>Код поставщика</th>
+      <th mat-header-cell *matHeaderCellDef>Код клиента</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Название организации</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      <td mat-cell *matCellDef="let element">
+        <input type="text" [(ngModel)]="element.name" />
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef>E-mail</th>
-      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      <td mat-cell *matCellDef="let element">
+        <input type="email" [(ngModel)]="element.email" />
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="phone">
       <th mat-header-cell *matHeaderCellDef>Номер телефона</th>
-      <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+      <td mat-cell *matCellDef="let element">
+        <input type="text" [(ngModel)]="element.phone" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="confirm">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-stroked-button
+          color="primary"
+          (click)="putElement(element)"
+        >
+          Изменить
+        </button>
+        <button
+          mat-stroked-button
+          color="warn"
+          (click)="deleteElement(element.id)"
+        >
+          Удалить
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
