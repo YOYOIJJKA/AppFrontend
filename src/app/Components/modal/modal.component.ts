@@ -29,8 +29,8 @@ export class ModalComponent {
       ],
       number: [null, [Validators.required, Validators.pattern(/^\S*$/)]],
       clientId: [null, []],
-      storageLocationId: [null, [Validators.required]],
-      supplierId: [null, [Validators.required]],
+      storageId: [null, [Validators.required]],
+      suppliersId: [null, [Validators.required]],
       dateRecieved: [null, [Validators.required]],
       dateExpired: [null, []],
     });

@@ -1,12 +1,12 @@
 {
   "products": [
     {
-      "id": "e15a",
-      "name": "New",
-      "number": 2,
-      "clientId": null,
-      "storageLocationId": "0",
-      "supplierId": "0",
+      "id": "f92a",
+      "name": "NEW",
+      "number": 22,
+      "clientId": "0",
+      "storageId": "0",
+      "suppliersId": "0",
       "dateRecieved": "2222-02-22",
       "dateExpired": "2222-02-22",
       "employeeId": "2dcb"

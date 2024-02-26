@@ -23,6 +23,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ModalComponent } from './Components/modal/modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ModalComponent } from './Components/modal/modal.component';
     MatRadioModule,
     MatSelectModule,
     HttpClientModule,
+    MatDialogModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

@@ -8,6 +8,8 @@ import { Client } from '../../Interfaces/client';
 import { Employee } from '../../Interfaces/employee';
 import { Suppliers } from '../../Interfaces/suppliers';
 import { StorageLocation } from '../../Interfaces/storage-location';
+import { ModalComponent } from '../modal/modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-products',
@@ -15,7 +17,7 @@ import { StorageLocation } from '../../Interfaces/storage-location';
   styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements AfterViewInit {
-  constructor(public http: ProductsService) {}
+  constructor(public http: ProductsService, public dialog: MatDialog) {}
 
   displayedColumns: string[] = [
     'id',
@@ -84,6 +86,17 @@ export class ProductsComponent implements AfterViewInit {
       complete: () => {
         this.dataSource = new MatTableDataSource<Product>(this.products);
         this.dataSource.paginator = this.paginator;
+      },
+    });
+  }
+
+  openModal() {
+    const dialogRedact = this.dialog.open(ModalComponent, {
+      width: '40%',
+    });
+    dialogRedact.afterClosed().subscribe({
+      complete: () => {
+        this.getProducts();
       },
     });
   }

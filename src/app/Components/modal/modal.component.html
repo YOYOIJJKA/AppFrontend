@@ -32,7 +32,7 @@
 
     <mat-form-field>
       <mat-label>ID места хранения</mat-label>
-      <mat-select formControlName="storageLocationId">
+      <mat-select formControlName="storageId">
         <ng-container *ngIf="storeLocation$ | async as storages">
           <mat-option
             *ngFor="let storage of storages"
@@ -45,7 +45,7 @@
 
     <mat-form-field>
       <mat-label>ID поставщика</mat-label>
-      <mat-select formControlName="supplierId">
+      <mat-select formControlName="suppliersId">
         <ng-container *ngIf="suppliers$ | async as suppliers">
           <mat-option
             *ngFor="let supplier of suppliers"
