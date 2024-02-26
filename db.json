@@ -14,9 +14,14 @@
   ],
   "posts": [
     {
-      "id": "0",
-      "flag": false,
-      "name": "Пользователь"
+      "id": "d1ea",
+      "name": "NewOne",
+      "flag": "true"
+    },
+    {
+      "id": "2fef",
+      "name": "Admin",
+      "flag": "true"
     }
   ],
   "employees": [
@@ -28,7 +33,7 @@
       "patronimic": "Александровна",
       "phone": "+79999874390",
       "email": "chipichipichapachapa",
-      "postId": "0"
+      "postId": null
     },
     {
       "id": "ecd1",
@@ -38,7 +43,7 @@
       "email": "chipichipi",
       "phone": "+79999874390",
       "password": "пипипи",
-      "postId": "0"
+      "postId": null
     }
   ],
   "suppliers": [

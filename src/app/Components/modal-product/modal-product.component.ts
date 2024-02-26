@@ -45,9 +45,12 @@ export class ModalProductComponent {
     this.http.getStorageLocations();
 
   post() {
-    let product: Product = this.modalForm.getRawValue();
-    product.employeeId = this.auth.getId().toString();
-    this.http.postProduct(product).subscribe();
+    if (this.modalForm.valid) {
+      let product: Product = this.modalForm.getRawValue();
+      product.employeeId = this.auth.getId().toString();
+      this.http.postProduct(product).subscribe();
+      this.closeModal();
+    }
   }
 
   closeModal() {

@@ -25,6 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { ModalProductComponent } from './Components/modal-product/modal-product.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalEmployeeComponent } from './Components/modal-employee/modal-employee.component';
+import { ModalClientComponent } from './Components/modal-client/modal-client.component';
+import { ModalPostComponent } from './Components/modal-post/modal-post.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ModalEmployeeComponent } from './Components/modal-employee/modal-employ
     RegistrationComponent,
     ModalProductComponent,
     ModalEmployeeComponent,
+    ModalClientComponent,
+    ModalPostComponent,
   ],
   imports: [
     BrowserModule,

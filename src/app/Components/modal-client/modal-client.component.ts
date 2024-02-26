@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Client } from '../../Interfaces/client';
 import { ProductsService } from '../products/products.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Employee } from '../../Interfaces/employee';
-import { Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Post } from '../../Interfaces/post';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-modal-employee',
-  templateUrl: './modal-employee.component.html',
-  styleUrl: './modal-employee.component.scss',
+  selector: 'app-modal-client',
+  templateUrl: './modal-client.component.html',
+  styleUrl: './modal-client.component.scss',
 })
-export class ModalEmployeeComponent {
+export class ModalClientComponent {
   modalForm: FormGroup;
 
   constructor(
@@ -22,14 +19,6 @@ export class ModalEmployeeComponent {
   ) {
     this.modalForm = formBuilder.group({
       name: [
-        null,
-        [Validators.required, Validators.pattern('[A-Za-zА-Яа-яЁё]*')],
-      ],
-      surname: [
-        null,
-        [Validators.required, Validators.pattern('[A-Za-zА-Яа-яЁё]*')],
-      ],
-      patronimic: [
         null,
         [Validators.required, Validators.pattern('[A-Za-zА-Яа-яЁё]*')],
       ],
@@ -49,13 +38,10 @@ export class ModalEmployeeComponent {
     });
   }
 
-  posts$: Observable<Post[]> = this.http.getPosts();
-
   post() {
     if (this.modalForm.valid) {
-      let employee: Employee = this.modalForm.getRawValue();
-      employee.postId = '0';
-      this.http.postEmployee(employee).subscribe();
+      let client: Client = this.modalForm.getRawValue();
+      this.http.postClient(client).subscribe();
       this.closeModal();
     }
   }

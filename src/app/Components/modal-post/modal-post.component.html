@@ -1,0 +1,28 @@
+<body>
+  <form [formGroup]="modalForm" class="modal">
+    <h1>Добавить должность</h1>
+    <mat-form-field>
+      <input
+        matInput
+        id="name"
+        formControlName="name"
+        placeholder="Название должности*"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Права доступа</mat-label>
+      <mat-select formControlName="flag">
+        <mat-option value="{{trueHTML}}">Администратор</mat-option>
+        <mat-option value="{{falseHTML}}">Пользователь</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="post()">
+      Сохранить
+    </button>
+    <button mat-raised-button color="warn" (click)="closeModal()">
+      Отмена
+    </button>
+  </form>
+</body>
