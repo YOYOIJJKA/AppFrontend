@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '../products/products.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ModalSuppliersComponent } from '../modal-suppliers/modal-suppliers.component';
 
 @Component({
   selector: 'app-suppliers',
@@ -13,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class SuppliersComponent {
   displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'confirm'];
-  filterForm: FormGroup
+  filterForm: FormGroup;
   suppliers?: Suppliers[];
 
   dataSource = new MatTableDataSource<Suppliers>(this.suppliers);
@@ -90,13 +91,13 @@ export class SuppliersComponent {
   }
 
   openModal() {
-    // const dialogRedact = this.dialog.open(ModalClientComponent, {
-    //   width: '40%',
-    // });
-    // dialogRedact.afterClosed().subscribe({
-    //   complete: () => {
-    //     this.getSuppliers();
-    //   },
-    // });
+    const dialogRedact = this.dialog.open(ModalSuppliersComponent, {
+      width: '40%',
+    });
+    dialogRedact.afterClosed().subscribe({
+      complete: () => {
+        this.getSuppliers();
+      },
+    });
   }
 }

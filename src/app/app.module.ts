@@ -27,6 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalEmployeeComponent } from './Components/modal-employee/modal-employee.component';
 import { ModalClientComponent } from './Components/modal-client/modal-client.component';
 import { ModalPostComponent } from './Components/modal-post/modal-post.component';
+import { ModalSuppliersComponent } from './Components/modal-suppliers/modal-suppliers.component';
+import { ModalStorageLocationComponent } from './Components/modal-storage-location/modal-storage-location.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { ModalPostComponent } from './Components/modal-post/modal-post.component
     ModalEmployeeComponent,
     ModalClientComponent,
     ModalPostComponent,
+    ModalSuppliersComponent,
+    ModalStorageLocationComponent,
   ],
   imports: [
     BrowserModule,

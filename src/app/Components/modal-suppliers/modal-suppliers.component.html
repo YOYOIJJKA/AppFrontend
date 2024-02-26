@@ -1,0 +1,35 @@
+<body>
+    <form [formGroup]="modalForm" class="modal">
+      <h1>Добавить поставщика</h1>
+      <mat-form-field>
+        <input matInput id="name" formControlName="name" placeholder="Название организации*" />
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input
+          matInput
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="E-mail*"
+        />
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input
+          matInput
+          id="phone"
+          formControlName="phone"
+          placeholder="Телефон*"
+        />
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" (click)="post()">
+        Сохранить
+      </button>
+      <button mat-raised-button color="warn" (click)="closeModal()">
+        Отмена
+      </button>
+    </form>
+  </body>
+  

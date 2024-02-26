@@ -1,0 +1,16 @@
+<body>
+    <form [formGroup]="modalForm" class="modal">
+      <h1>Добавить место хранения</h1>
+      <mat-form-field>
+        <input matInput id="location" formControlName="location" placeholder="Местоположение*" />
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" (click)="post()">
+        Сохранить
+      </button>
+      <button mat-raised-button color="warn" (click)="closeModal()">
+        Отмена
+      </button>
+    </form>
+  </body>
+  
