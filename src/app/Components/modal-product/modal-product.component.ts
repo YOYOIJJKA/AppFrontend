@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-modal-product',
   templateUrl: './modal-product.component.html',
-  styleUrl: './modal.component.scss',
+  styleUrl: './modal-product.component.scss',
 })
 export class ModalProductComponent {
   modalForm: FormGroup;

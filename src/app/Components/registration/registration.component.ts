@@ -33,14 +33,15 @@ export class RegistrationComponent implements OnInit {
       ],
       phone: [
         null,
+        [Validators.required, Validators.pattern(/^((\+7|7|8)+([0-9]){10})$/)],
+      ],
+      email: [
+        null,
         [
           Validators.required,
-          Validators.pattern('[- +()0-9]+'),
-          Validators.maxLength(12),
-          Validators.minLength(12),
+          Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
         ],
       ],
-      email: [null, [Validators.required]],
     });
   }
   ngOnInit(): void {}

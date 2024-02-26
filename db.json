@@ -29,6 +29,16 @@
       "phone": "+79999874390",
       "email": "chipichipichapachapa",
       "postId": "0"
+    },
+    {
+      "id": "ecd1",
+      "name": "Addd",
+      "surname": "dad",
+      "patronimic": "NEWONE",
+      "email": "chipichipi",
+      "phone": "+79999874390",
+      "password": "пипипи",
+      "postId": "0"
     }
   ],
   "suppliers": [

@@ -1,0 +1,71 @@
+<body>
+  <form [formGroup]="modalForm" class="modal">
+    <h1>Добавить сотрудника</h1>
+    <mat-form-field>
+      <input matInput id="name" formControlName="name" placeholder="Имя*" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        id="surname"
+        formControlName="surname"
+        placeholder="Фамилия*"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        id="patronimic"
+        formControlName="patronimic"
+        placeholder="Отчество*"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        id="email"
+        formControlName="email"
+        placeholder="E-mail*"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        id="phone"
+        formControlName="phone"
+        placeholder="Телефон*"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>ID должности</mat-label>
+      <mat-select formControlName="postId">
+        <ng-container *ngIf="posts$ | async as posts">
+          <mat-option *ngFor="let post of posts" value="{{ post.id }}">{{
+            post.id
+          }}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Пароль*"
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="post()">
+      Сохранить
+    </button>
+    <button mat-raised-button color="warn" (click)="closeModal()">
+      Отмена
+    </button>
+  </form>
+</body>

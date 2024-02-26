@@ -24,6 +24,7 @@ import { RegistrationComponent } from './Components/registration/registration.co
 import { MatSelectModule } from '@angular/material/select';
 import { ModalProductComponent } from './Components/modal-product/modal-product.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ModalEmployeeComponent } from './Components/modal-employee/modal-employee.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AuthComponent,
     RegistrationComponent,
     ModalProductComponent,
+    ModalEmployeeComponent,
   ],
   imports: [
     BrowserModule,

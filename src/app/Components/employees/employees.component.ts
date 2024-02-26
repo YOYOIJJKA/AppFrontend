@@ -7,6 +7,7 @@ import { ProductsService } from '../products/products.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalEmployeeComponent } from '../modal-employee/modal-employee.component';
 
 @Component({
   selector: 'app-employees',
@@ -91,12 +92,10 @@ export class EmployeesComponent {
   }
 
   deleteElement(id: number) {
-    this.http
-      .deleteEmployee(id)
-      .subscribe({
-        error: (e) => console.log(e),
-        complete: () => this.getEmployees(),
-      });
+    this.http.deleteEmployee(id).subscribe({
+      error: (e) => console.log(e),
+      complete: () => this.getEmployees(),
+    });
   }
 
   postElement(element: Employee) {
@@ -106,13 +105,13 @@ export class EmployeesComponent {
   }
 
   openModal() {
-    //   const dialogRedact = this.dialog.open(????????????, {
-    //     width: '40%',
-    //   });
-    //   dialogRedact.afterClosed().subscribe({
-    //     complete: () => {
-    //       this.getEmployees();
-    //     },
-    //   });
+    const dialogRedact = this.dialog.open(ModalEmployeeComponent, {
+      width: '40%',
+    });
+    dialogRedact.afterClosed().subscribe({
+      complete: () => {
+        this.getEmployees();
+      },
+    });
   }
 }
