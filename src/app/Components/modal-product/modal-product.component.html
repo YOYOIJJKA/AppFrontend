@@ -20,37 +20,37 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>ID клиента</mat-label>
+      <mat-label>Клиент</mat-label>
       <mat-select formControlName="clientId">
         <ng-container *ngIf="clients$ | async as clients">
           <mat-option *ngFor="let client of clients" value="{{ client.id }}">{{
-            client.id
+            client.name
           }}</mat-option>
         </ng-container>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>ID места хранения</mat-label>
+      <mat-label>Место хранения</mat-label>
       <mat-select formControlName="storageId">
         <ng-container *ngIf="storeLocation$ | async as storages">
           <mat-option
             *ngFor="let storage of storages"
             value="{{ storage.id }}"
-            >{{ storage.id }}</mat-option
+            >{{ storage.location }}</mat-option
           >
         </ng-container>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>ID поставщика</mat-label>
+      <mat-label>Поставщик</mat-label>
       <mat-select formControlName="suppliersId">
         <ng-container *ngIf="suppliers$ | async as suppliers">
           <mat-option
             *ngFor="let supplier of suppliers"
             value="{{ supplier.id }}"
-            >{{ supplier.id }}</mat-option
+            >{{ supplier.name }}</mat-option
           >
         </ng-container>
       </mat-select>

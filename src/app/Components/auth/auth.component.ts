@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { map } from 'rxjs';
 import { Employee } from '../../Interfaces/employee';
+import { ProductsService } from '../products/products.service';
+import { Post } from '../../Interfaces/post';
 
 @Component({
   selector: 'app-auth',
@@ -17,7 +19,8 @@ export class AuthComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public router: Router,
-    public auth: AuthService
+    public auth: AuthService,
+    public http: ProductsService
   ) {
     this.authForm = formBuilder.group({
       login: [
@@ -54,13 +57,41 @@ export class AuthComponent implements OnInit {
           if (this.employees && this.employees.length != 0) {
             this.auth.setAuth();
             this.auth.saveId(this.employees[0].id);
-            this.auth.saveFlag(false);
+            this.checkFlag();
             this.router.navigate(['products']);
           }
         },
       });
   }
 
+  checkFlag() {
+    let newPosts: Post[];
+    if (this.employees && this.employees[0])
+      this.http
+        .getPosts()
+        .pipe(
+          map((posts) => {
+            newPosts = posts.filter((post) => {
+              return post.id.toString() == this.employees![0].postId;
+            });
+          })
+        )
+        .subscribe({
+          complete: () => {
+            if (newPosts.length != 0) {
+              if (newPosts[0].flag == true) {
+                this.auth.saveFlag(true);
+                console.log('TRUES');
+              } else {
+                this.auth.saveFlag(false);
+                console.log(false);
+              }
+            } else {
+              this.auth.saveFlag(false);
+            }
+          },
+        });
+  }
   // logIn() {
   //   if (!this.authForm.invalid) {
   //     this.router.navigate(['products']);

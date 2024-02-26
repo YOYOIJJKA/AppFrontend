@@ -54,7 +54,6 @@ export class ModalEmployeeComponent {
   post() {
     if (this.modalForm.valid) {
       let employee: Employee = this.modalForm.getRawValue();
-      employee.postId = '0';
       this.http.postEmployee(employee).subscribe();
       this.closeModal();
     }

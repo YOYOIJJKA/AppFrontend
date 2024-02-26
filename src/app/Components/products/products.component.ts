@@ -70,8 +70,8 @@ export class ProductsComponent implements AfterViewInit {
   }
 
   deleteElement(id: number) {
-    this.http.deleteProduct(id).subscribe({ error: (e) => console.log(e) });
-    this.getProducts();
+    this.http.deleteProduct(id).subscribe({ error: (e) => console.log(e),
+    complete: () => this.getProducts() });
   }
 
   postElement(element: Product) {

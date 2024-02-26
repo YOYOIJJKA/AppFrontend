@@ -42,11 +42,11 @@
       />
     </mat-form-field>
     <mat-form-field>
-      <mat-label>ID должности</mat-label>
+      <mat-label>Должность</mat-label>
       <mat-select formControlName="postId">
         <ng-container *ngIf="posts$ | async as posts">
           <mat-option *ngFor="let post of posts" value="{{ post.id }}">{{
-            post.id
+            post.name
           }}</mat-option>
         </ng-container>
       </mat-select>

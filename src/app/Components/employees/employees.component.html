@@ -49,12 +49,12 @@
     </ng-container>
 
     <ng-container matColumnDef="postId">
-      <th mat-header-cell *matHeaderCellDef>ID должности</th>
+      <th mat-header-cell *matHeaderCellDef>Должность</th>
       <td mat-cell *matCellDef="let element">
         <mat-select [(ngModel)]="element.postId">
           <ng-container *ngIf="posts$ | async as posts">
             <mat-option *ngFor="let post of posts" value="{{ post.id }}">{{
-              post.id
+              post.name
             }}</mat-option>
           </ng-container>
         </mat-select>

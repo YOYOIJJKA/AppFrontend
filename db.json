@@ -1,15 +1,37 @@
 {
   "products": [
     {
-      "id": "f92a",
-      "name": "NEW",
-      "number": 22,
-      "clientId": "0",
-      "storageId": "0",
-      "suppliersId": "0",
-      "dateRecieved": "2222-02-22",
+      "id": "bb13",
+      "name": "Маргарита",
+      "number": 2,
+      "clientId": "717c",
+      "storageId": "19a1",
+      "suppliersId": "ec7f",
+      "dateRecieved": "22222-02-22",
       "dateExpired": "2222-02-22",
-      "employeeId": "2dcb"
+      "employeeId": "ecd1"
+    },
+    {
+      "id": "934c",
+      "name": "Mospolytech",
+      "number": 5,
+      "clientId": "717c",
+      "storageId": "0",
+      "suppliersId": "ec7f",
+      "dateRecieved": "2002-10-05",
+      "dateExpired": null,
+      "employeeId": "ecd1"
+    },
+    {
+      "id": "ada7",
+      "name": "AAAA",
+      "number": 1,
+      "clientId": "717c",
+      "storageId": "0",
+      "suppliersId": "ec7f",
+      "dateRecieved": "2222-02-22",
+      "dateExpired": null,
+      "employeeId": "ecd1"
     }
   ],
   "posts": [
@@ -19,9 +41,9 @@
       "flag": "true"
     },
     {
-      "id": "2fef",
-      "name": "Admin",
-      "flag": "true"
+      "id": "22f1",
+      "name": "Александр",
+      "flag": "false"
     }
   ],
   "employees": [
@@ -29,11 +51,11 @@
       "id": "2dcb",
       "password": "пипипи",
       "name": "Маргарита",
-      "surname": "CE",
+      "surname": "Сульдина Калитюк",
       "patronimic": "Александровна",
       "phone": "+79999874390",
       "email": "chipichipichapachapa",
-      "postId": "d1ea"
+      "postId": "22f1"
     },
     {
       "id": "ecd1",
@@ -44,21 +66,49 @@
       "phone": "+79999874390",
       "password": "пипипи",
       "postId": "d1ea"
+    },
+    {
+      "id": "cd01",
+      "name": "Мария",
+      "surname": "Маргаритовна",
+      "patronimic": "Сульдина",
+      "email": "MYAAAA@mya.com",
+      "phone": "+79999874390",
+      "postId": "d1ea",
+      "password": "пипипи"
+    },
+    {
+      "id": "6fdd",
+      "name": "Мария",
+      "surname": "Маргаритовна",
+      "patronimic": "Сульдина",
+      "email": "MYAAAA@mya.com",
+      "phone": "+79999874390",
+      "postId": "22f1",
+      "password": "пипипи"
     }
   ],
   "suppliers": [
     {
-      "id": "0",
-      "name": "Маргарита",
-      "phone": "9788996",
-      "email": "DAJOKA"
+      "id": "ec7f",
+      "name": "Сульдина",
+      "email": "y7zdoh@list.ru",
+      "phone": "+79999874390"
     }
   ],
   "storage-location": [
     {
       "id": "0",
       "name": "Маргарита",
-      "location": "НА КЛАДБИЩЕ"
+      "location": "ВОН НТА"
+    },
+    {
+      "id": "19a1",
+      "location": "ТАМ"
+    },
+    {
+      "id": "6b34",
+      "location": "ТАМ"
     }
   ],
   "clients": [

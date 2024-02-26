@@ -11,14 +11,16 @@
     [formControl]="tableType"
   >
     <mat-radio-button color="primary" value="products">Товары</mat-radio-button>
-    <mat-radio-button color="primary" value="employees"
+    <mat-radio-button *ngIf="checkFlag()" color="primary" value="employees"
       >Сотрудники</mat-radio-button
     >
     <mat-radio-button color="primary" value="clients">Клиенты</mat-radio-button>
     <mat-radio-button color="primary" value="suppliers"
       >Поставщики</mat-radio-button
     >
-    <mat-radio-button color="primary" value="posts">Должности</mat-radio-button>
+    <mat-radio-button color="primary" *ngIf="checkFlag()" value="posts"
+      >Должности</mat-radio-button
+    >
     <mat-radio-button color="primary" value="storage-location"
       >Место хранения</mat-radio-button
     >

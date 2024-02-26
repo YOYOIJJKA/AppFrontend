@@ -31,4 +31,8 @@ export class AppComponent implements OnInit {
   navigate() {
     this.router.navigate([this.tableType.getRawValue()]);
   }
+
+  checkFlag(): boolean {
+    return this.auth.getFlag();
+  }
 }

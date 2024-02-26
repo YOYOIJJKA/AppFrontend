@@ -83,7 +83,7 @@ export class StorageLocationComponent {
   }
 
   deleteElement(id: number) {
-    this.http.deleteSuppliers(id).subscribe({
+    this.http.deleteStorageLocation(id).subscribe({
       error: (e) => console.log(e),
       complete: () => this.getStorageLocations(),
     });
