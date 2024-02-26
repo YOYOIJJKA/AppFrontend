@@ -6,6 +6,7 @@ import { ProductsService } from '../products/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalClientComponent } from '../modal-client/modal-client.component';
+import { Column } from '../../Interfaces/column';
 
 @Component({
   selector: 'app-clients',
@@ -14,9 +15,15 @@ import { ModalClientComponent } from '../modal-client/modal-client.component';
 })
 export class ClientsComponent {
   displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'confirm'];
-  ////////////flag == boolean; boolean => string by f = user t = admin
+  displayedNames: string[] = [
+    'Код клиента',
+    'Название Организации',
+    'E-mail',
+    'Номер телефона',
+  ];
   clients?: Client[];
   filterForm: FormGroup;
+  columns: Column[];
 
   constructor(
     public http: ProductsService,
@@ -26,6 +33,9 @@ export class ClientsComponent {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
       filterParam: [null, [Validators.required]],
+    });
+    this.columns = this.displayedNames.map((newName, index) => {
+      return { id: this.displayedColumns[index], name: newName };
     });
   }
 

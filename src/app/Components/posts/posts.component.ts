@@ -6,6 +6,7 @@ import { ProductsService } from '../products/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalPostComponent } from '../modal-post/modal-post.component';
+import { Column } from '../../Interfaces/column';
 
 @Component({
   selector: 'app-posts',
@@ -14,9 +15,14 @@ import { ModalPostComponent } from '../modal-post/modal-post.component';
 })
 export class PostsComponent {
   displayedColumns: string[] = ['id', 'name', 'flag', 'confirm'];
-  ////////////flag == boolean; boolean => string by f = user t = admin
+  displayedNames: string[] = [
+    'Код должности',
+    'Наименование должности',
+    'Права доступа',
+  ];
   posts?: Post[];
   filterForm: FormGroup;
+  columns: Column[];
 
   dataSource = new MatTableDataSource<Post>(this.posts);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -35,6 +41,9 @@ export class PostsComponent {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
       filterParam: [null, [Validators.required]],
+    });
+    this.columns = this.displayedNames.map((newName, index) => {
+      return { id: this.displayedColumns[index], name: newName };
     });
   }
 

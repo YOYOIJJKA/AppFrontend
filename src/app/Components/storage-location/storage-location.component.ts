@@ -6,6 +6,7 @@ import { ProductsService } from '../products/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalStorageLocationComponent } from '../modal-storage-location/modal-storage-location.component';
+import { Column } from '../../Interfaces/column';
 
 @Component({
   selector: 'app-storage-location',
@@ -14,9 +15,10 @@ import { ModalStorageLocationComponent } from '../modal-storage-location/modal-s
 })
 export class StorageLocationComponent {
   displayedColumns: string[] = ['id', 'location', 'confirm'];
+  displayedNames: string[] = ['Код места хранения', 'Местоположение'];
 
   storage?: StorageLocation[];
-
+  columns: Column[];
   filterForm: FormGroup;
 
   dataSource = new MatTableDataSource<StorageLocation>(this.storage);
@@ -30,6 +32,9 @@ export class StorageLocationComponent {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
       filterParam: [null, [Validators.required]],
+    });
+    this.columns = this.displayedNames.map((newName, index) => {
+      return { id: this.displayedColumns[index], name: newName };
     });
   }
 

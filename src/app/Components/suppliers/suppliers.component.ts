@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductsService } from '../products/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalSuppliersComponent } from '../modal-suppliers/modal-suppliers.component';
+import { Column } from '../../Interfaces/column';
 
 @Component({
   selector: 'app-suppliers',
@@ -14,8 +15,15 @@ import { ModalSuppliersComponent } from '../modal-suppliers/modal-suppliers.comp
 })
 export class SuppliersComponent {
   displayedColumns: string[] = ['id', 'name', 'email', 'phone', 'confirm'];
+  displayedNames: string[] = [
+    'Код поставщика',
+    'Название организации',
+    'E-mail',
+    'Номер телефона',
+  ];
   filterForm: FormGroup;
   suppliers?: Suppliers[];
+  columns: Column[];
 
   dataSource = new MatTableDataSource<Suppliers>(this.suppliers);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -27,6 +35,9 @@ export class SuppliersComponent {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
       filterParam: [null, [Validators.required]],
+    });
+    this.columns = this.displayedNames.map((newName, index) => {
+      return { id: this.displayedColumns[index], name: newName };
     });
   }
 

@@ -11,6 +11,7 @@ import { StorageLocation } from '../../Interfaces/storage-location';
 import { ModalProductComponent } from '../modal-product/modal-product.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Column } from '../../Interfaces/column';
 
 @Component({
   selector: 'app-products',
@@ -19,6 +20,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProductsComponent implements AfterViewInit {
   filterForm: FormGroup;
+
+  columns: Column[] = [];
+
+  products?: Product[];
+
   constructor(
     public http: ProductsService,
     public dialog: MatDialog,
@@ -28,6 +34,12 @@ export class ProductsComponent implements AfterViewInit {
       type: [null, [Validators.required]],
       filterParam: [null, [Validators.required]],
     });
+
+    this.columns = this.displayedColumns.map((column, index) => {
+      return { id: column, name: this.displayedNames[index] };
+    });
+    this.columns.pop();
+    this.columns.pop();
   }
 
   displayedColumns: string[] = [
@@ -43,7 +55,17 @@ export class ProductsComponent implements AfterViewInit {
     'confirm',
   ];
 
-  products?: Product[];
+  displayedNames: string[] = [
+    'Код товара',
+    'Название',
+    'Место Хранения',
+    'Количество',
+    'ID работника',
+    'Клиент',
+    'Поставщик',
+    'Дата получения',
+    'Дата окончания хранения',
+  ];
 
   dataSource = new MatTableDataSource<Product>(this.products);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -70,8 +92,10 @@ export class ProductsComponent implements AfterViewInit {
   }
 
   deleteElement(id: number) {
-    this.http.deleteProduct(id).subscribe({ error: (e) => console.log(e),
-    complete: () => this.getProducts() });
+    this.http.deleteProduct(id).subscribe({
+      error: (e) => console.log(e),
+      complete: () => this.getProducts(),
+    });
   }
 
   postElement(element: Product) {

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalEmployeeComponent } from '../modal-employee/modal-employee.component';
+import { Column } from '../../Interfaces/column';
 
 @Component({
   selector: 'app-employees',
@@ -25,7 +26,17 @@ export class EmployeesComponent {
     'phone',
     'confirm',
   ];
-  ////////////flag == boolean; boolean => string by f = user t = admin
+  displayedNames: string[] = [
+    'Код сотрудника',
+    'Должность',
+    'Имя',
+    'Фамилия',
+    'Отчество',
+    'E-mail',
+    'Номер телефона',
+  ];
+
+  columns: Column[];
   employees?: Employee[];
   filterForm: FormGroup;
   constructor(
@@ -36,6 +47,10 @@ export class EmployeesComponent {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
       filterParam: [null, [Validators.required]],
+    });
+
+    this.columns = this.displayedNames.map((newName, index) => {
+      return { id: this.displayedColumns[index], name: newName };
     });
   }
 
