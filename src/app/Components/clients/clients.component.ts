@@ -4,10 +4,16 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Client } from '../../Interfaces/client';
 import { ProductsService } from '../products/products.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ModalClientComponent } from '../modal-client/modal-client.component';
 import { Column } from '../../Interfaces/column';
 import { ExcelService } from '../../excel.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-clients',
@@ -26,11 +32,36 @@ export class ClientsComponent {
   filterForm: FormGroup;
   columns: Column[];
 
+  // name = new FormControl(null, [
+  //   Validators.required,
+  //   Validators.pattern('[A-Za-zА-Яа-яЁё]*'),
+  // ]);
+  // phone = new FormControl(null, [
+  //   Validators.required,
+  //   Validators.pattern(/^((\+7|7|8)+([0-9]){10})$/),
+  // ]);
+  // email = new FormControl(null, [
+  //   Validators.required,
+  //   Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
+  // ]);
+
+  // checkValid() {
+  //   if (this.email.valid && this.phone.valid && this.name.valid) return true;
+  //   else {
+  //     this.snackBar.open(
+  //       'Проверьте правильность введенных данных',
+  //       'Подтвердить'
+  //     );
+  //     return false;
+  //   }
+  // }
+
   constructor(
     public http: ProductsService,
     public dialog: MatDialog,
     public formBuilder: FormBuilder,
-    public excel: ExcelService
+    public excel: ExcelService,
+    public snackBar: MatSnackBar
   ) {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
@@ -87,10 +118,12 @@ export class ClientsComponent {
   }
 
   putElement(element: Client) {
-    this.http.putClient(element).subscribe();
+    // if (this.checkValid())
+     this.http.putClient(element).subscribe();
   }
 
   putElements(elements: Client[] | undefined) {
+    // if (elements && this.checkValid())
     if (elements)
       elements.forEach((element) => this.http.putClient(element).subscribe());
   }
@@ -98,12 +131,6 @@ export class ClientsComponent {
   deleteElement(id: number) {
     this.http.deleteClient(id).subscribe({
       error: (e) => console.log(e),
-      complete: () => this.getClients(),
-    });
-  }
-
-  postElement(element: Client) {
-    this.http.postClient(element).subscribe({
       complete: () => this.getClients(),
     });
   }
