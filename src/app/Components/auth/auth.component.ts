@@ -7,6 +7,7 @@ import { map } from 'rxjs';
 import { Employee } from '../../Interfaces/employee';
 import { ProductsService } from '../products/products.service';
 import { Post } from '../../Interfaces/post';
+import {MatSnackBar} from '@angular/material/snack-bar'
 
 @Component({
   selector: 'app-auth',
@@ -20,7 +21,8 @@ export class AuthComponent implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router,
     public auth: AuthService,
-    public http: ProductsService
+    public http: ProductsService,
+    public snackBar: MatSnackBar
   ) {
     this.authForm = formBuilder.group({
       login: [
@@ -38,7 +40,7 @@ export class AuthComponent implements OnInit {
   checkEmployees() {
     let login = this.authForm.getRawValue().login;
     let password = this.authForm.getRawValue().password;
-    console.log(login);
+    if (this.authForm.valid)
     this.auth
       .getEmployees()
       .pipe(
@@ -60,8 +62,12 @@ export class AuthComponent implements OnInit {
             this.checkFlag();
             this.router.navigate(['products']);
           }
+          else {
+            this.snackBar.open('Пользователь не найден, проверьте правильность введенных данных', 'Подтвердить')
+          }
         },
       });
+      else this.snackBar.open('Некорректно введены данные, проверьте правильность введенных данных', 'Подтвердить')
   }
 
   checkFlag() {
@@ -78,8 +84,9 @@ export class AuthComponent implements OnInit {
         )
         .subscribe({
           complete: () => {
+            console.log( "NEW POSTST ARE =", newPosts)
             if (newPosts.length != 0) {
-              if (newPosts[0].flag == true) {
+              if (newPosts[0].flag.toString() == 'true') {
                 this.auth.saveFlag(true);
                 console.log('TRUES');
               } else {

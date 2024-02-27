@@ -43,7 +43,7 @@
     {
       "id": "22f1",
       "name": "Александр",
-      "flag": "false"
+      "flag": "true"
     }
   ],
   "employees": [
@@ -62,7 +62,7 @@
       "name": "Addd",
       "surname": "dad",
       "patronimic": "NEWONE",
-      "email": "chipichipi",
+      "email": "chipichipi@email.com",
       "phone": "+79999874390",
       "password": "пипипи",
       "postId": "d1ea"
@@ -84,7 +84,7 @@
       "patronimic": "Сульдина",
       "email": "MYAAAA@mya.com",
       "phone": "+79999874390",
-      "postId": "22f1",
+      "postId": "d1ea",
       "password": "пипипи"
     }
   ],
