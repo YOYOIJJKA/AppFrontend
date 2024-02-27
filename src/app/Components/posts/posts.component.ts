@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalPostComponent } from '../modal-post/modal-post.component';
 import { Column } from '../../Interfaces/column';
+import { ExcelService } from '../../excel.service';
 
 @Component({
   selector: 'app-posts',
@@ -36,7 +37,8 @@ export class PostsComponent {
   constructor(
     public http: ProductsService,
     public dialog: MatDialog,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public excel: ExcelService
   ) {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
@@ -46,7 +48,9 @@ export class PostsComponent {
       return { id: this.displayedColumns[index], name: newName };
     });
   }
-
+  export() {
+    this.excel.exportToExcel(this.posts ?? [], 'Posts', 'PostsSheet');
+  }
   getPosts() {
     this.http.getPosts().subscribe({
       next: (value) => (this.posts = value),

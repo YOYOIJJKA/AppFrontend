@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalStorageLocationComponent } from '../modal-storage-location/modal-storage-location.component';
 import { Column } from '../../Interfaces/column';
+import { ExcelService } from '../../excel.service';
 
 @Component({
   selector: 'app-storage-location',
@@ -27,7 +28,8 @@ export class StorageLocationComponent {
   constructor(
     public http: ProductsService,
     public dialog: MatDialog,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public excel: ExcelService
   ) {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
@@ -36,6 +38,10 @@ export class StorageLocationComponent {
     this.columns = this.displayedNames.map((newName, index) => {
       return { id: this.displayedColumns[index], name: newName };
     });
+  }
+
+  export() {
+    this.excel.exportToExcel(this.storage ?? [], 'Storages', 'StorageSheet');
   }
 
   ngAfterViewInit() {

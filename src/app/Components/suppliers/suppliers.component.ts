@@ -7,6 +7,7 @@ import { ProductsService } from '../products/products.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalSuppliersComponent } from '../modal-suppliers/modal-suppliers.component';
 import { Column } from '../../Interfaces/column';
+import { ExcelService } from '../../excel.service';
 
 @Component({
   selector: 'app-suppliers',
@@ -30,7 +31,8 @@ export class SuppliersComponent {
   constructor(
     public http: ProductsService,
     public dialog: MatDialog,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public excel: ExcelService
   ) {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
@@ -43,6 +45,10 @@ export class SuppliersComponent {
 
   ngAfterViewInit() {
     this.getSuppliers();
+  }
+
+  export() {
+    this.excel.exportToExcel(this.suppliers ?? [], 'Suppliers', 'SupplierSheet');
   }
 
   getSuppliers() {

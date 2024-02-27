@@ -12,6 +12,7 @@ import { ModalProductComponent } from '../modal-product/modal-product.component'
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Column } from '../../Interfaces/column';
+import { ExcelService } from '../../excel.service';
 
 @Component({
   selector: 'app-products',
@@ -28,7 +29,8 @@ export class ProductsComponent implements AfterViewInit {
   constructor(
     public http: ProductsService,
     public dialog: MatDialog,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public excel: ExcelService
   ) {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
@@ -40,6 +42,10 @@ export class ProductsComponent implements AfterViewInit {
     });
     this.columns.pop();
     this.columns.pop();
+  }
+
+  export() {
+    this.excel.exportToExcel(this.products ?? [], 'Products', 'ProductSheet');
   }
 
   displayedColumns: string[] = [

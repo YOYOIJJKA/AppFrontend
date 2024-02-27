@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalClientComponent } from '../modal-client/modal-client.component';
 import { Column } from '../../Interfaces/column';
+import { ExcelService } from '../../excel.service';
 
 @Component({
   selector: 'app-clients',
@@ -28,7 +29,8 @@ export class ClientsComponent {
   constructor(
     public http: ProductsService,
     public dialog: MatDialog,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public excel: ExcelService
   ) {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
@@ -44,6 +46,10 @@ export class ClientsComponent {
 
   ngAfterViewInit() {
     this.getClients();
+  }
+
+  export() {
+    this.excel.exportToExcel(this.clients ?? [], 'Clients', 'ClientSheet');
   }
 
   getClients() {

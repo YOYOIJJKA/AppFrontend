@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalEmployeeComponent } from '../modal-employee/modal-employee.component';
 import { Column } from '../../Interfaces/column';
+import { ExcelService } from '../../excel.service';
 
 @Component({
   selector: 'app-employees',
@@ -42,7 +43,8 @@ export class EmployeesComponent {
   constructor(
     public http: ProductsService,
     public dialog: MatDialog,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public excel: ExcelService
   ) {
     this.filterForm = this.formBuilder.group({
       type: [null, [Validators.required]],
@@ -61,6 +63,10 @@ export class EmployeesComponent {
 
   ngAfterViewInit() {
     this.getEmployees();
+  }
+
+  export() {
+    this.excel.exportToExcel(this.employees ?? [], 'Employees', 'EmployeeSheet');
   }
 
   getEmployees() {
